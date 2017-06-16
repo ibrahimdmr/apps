@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/private/template.xhtml">
+	<ui:define name="content">
+		<h:link outcome="/private/todo/create" value="Todo Ekle"
+			styleClass="w3-button w3-teal w3-margin-bottom" />
+		<h:form>
+			<ui:repeat var="todo" value="#{todoListBean.todoList}">
+				<div id="todoCard_#{todo.id}"
+					class="w3-row w3-margin-bottom w3-padding w3-card-4 
+					      #{todo.status=='NEW'?'w3-light-gray':''} 
+					      #{todo.status=='INPROGRESS'?'w3-khaki':''} 
+					      #{todo.status=='DONE'?'w3-blue':''}  
+					      #{todo.status=='CANCEL'?'w3-orange':''} ">
+					<div class="w3-col s12 l12 m12 w3-margin-bottom">
+						<h:outputText value="#{todo.title}" />
+					</div>
+					<div>
+						<div class="w3-col s3 l3 m3">
+							<h:link outcome="/private/todo/edit" value="Edit">
+								<f:param name="id" value="#{todo.id}" />
+							</h:link>
+						</div>
+						<div class="w3-col s3 l3 m3">
+							<h:outputText value="#{todo.status}" />
+							<br />
+							<h:selectOneMenu value="#{todo.status}"
+								styleClass=" 
+	   							  #{todo.status=='NEW'?'w3-light-gray':''} 
+							      #{todo.status=='INPROGRESS'?'w3-khaki':''} 
+							      #{todo.status=='DONE'?'w3-blue':''}  
+							      #{todo.status=='CANCEL'?'w3-orange':''}">
+								<f:ajax event="change" execute="@this" render="@form"
+									listener="#{todoListBean.statusChanged}" />
+								<f:attribute name="todo" value="#{todo}" />
+								<f:selectItem itemValue="NEW" itemLabel="Yeni" />
+								<f:selectItem itemValue="INPROGRESS" itemLabel="Yapılıyor" />
+								<f:selectItem itemValue="DONE" itemLabel="Tamamlandı" />
+								<f:selectItem itemValue="CANCEL" itemLabel="İptal" />
+							</h:selectOneMenu>
+						</div>
+
+						<div class="w3-col s6 l6 m6 w3-right-align">
+							<h:outputText value="#{todo.targetDate}">
+								<f:convertDateTime pattern="dd.MMM EEE" timeZone="GMT+3"
+									locale="TR-tr" />
+							</h:outputText>
+						</div>
+					</div>
+				</div>
+			</ui:repeat>
+		</h:form>
+	</ui:define>
+</ui:composition>

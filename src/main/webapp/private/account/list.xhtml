@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/private/template.xhtml">
+	<ui:define name="content">
+		<h:link outcome="/private/account/create" value="Yeni Hesap"
+			styleClass="w3-button w3-teal" />
+		<div class="w3-responsive">
+			<h:dataTable value="#{accountListBean.accounts}" var="account"
+				styleClass="w3-table w3-border w3-striped w3-margin-top w3-card-4"
+				headerClass="w3-gray">
+				<h:column>
+					<f:facet name="header">İşlemler</f:facet>
+					<h:link outcome="/private/account/edit" value="Düzenle">
+						<f:param name="id" value="#{account.id}" />
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Hesap Adı</f:facet>
+					<h:outputText value="#{account.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Parola</f:facet>
+					<h:outputText value="#{account.keyword}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Şifre</f:facet>
+					<h:outputText value="#{account.password}" />
+				</h:column>
+			</h:dataTable>
+		</div>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/private/template.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<p>
+				<h:outputText value="Kullanıcı" />
+				<h:inputText value="#{userEditBean.user.username}"
+					styleClass="w3-input" />
+			</p>
+			<p>
+				<h:outputText value="Şifre" />
+				<h:inputText value="#{userEditBean.user.password}"
+					styleClass="w3-input" />
+			</p>
+			<p>
+				<h:commandButton action="#{userEditBean.save()}" value="Kaydet"
+					styleClass="w3-button w3-teal w3-block" />
+			</p>
+		</h:form>
+	</ui:define>
+</ui:composition>

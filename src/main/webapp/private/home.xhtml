@@ -1,0 +1,19 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/private/template.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<h:link outcome="/private/user/list" value="Kullanıcılar"
+				styleClass="w3-button w3-teal w3-border w3-margin-bottom w3-block" />
+			<h:link outcome="/private/todo/list" value="Todo List"
+				styleClass="w3-button w3-teal w3-border w3-margin-bottom w3-block" />
+			<h:link outcome="/private/account/list" value="Hesaplar"
+				styleClass="w3-button w3-teal w3-border w3-margin-bottom w3-block" />
+			<h:commandLink action="#{loginBean.doLogout()}" value="Çıkış"
+				styleClass="w3-button w3-orange w3-border w3-margin-bottom w3-block" />
+
+		</h:form>
+	</ui:define>
+</ui:composition>

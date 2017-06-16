@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>PassMgr</title>
+	<meta name="viewport"
+		content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+	<link rel="shortcut icon" type="image/png"
+		href="#{request.contextPath}/favicon.png" />
+</h:head>
+<h:body>
+	<h:form>
+		<div class="w3-black w3-border w3-center w3-padding w3-large">Login</div>
+		<div class="w3-container">
+			<p>
+				<h:outputText value="Kullanıcı" />
+				<h:inputText value="#{loginBean.username}" styleClass="w3-input" />
+			</p>
+			<p>
+				<h:outputText value="Şifre" />
+				<h:inputSecret value="#{loginBean.password}" styleClass="w3-input" />
+			</p>
+			<p>
+				<h:commandButton action="#{loginBean.doLogin()}" value="Giriş"
+					styleClass="w3-button w3-block w3-border w3-teal" />
+			</p>
+		</div>
+		<div class="w3-red w3-bottom">
+			<h:messages globalOnly="true" layout="table" />
+		</div>
+
+	</h:form>
+</h:body>
+</html>

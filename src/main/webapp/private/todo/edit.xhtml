@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/private/template.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<p>
+				<h:outputText value="Durum" />
+				<h:selectOneMenu value="#{todoEditBean.todo.status}">
+					<f:selectItem itemValue="NEW" itemLabel="Yeni" />
+					<f:selectItem itemValue="INPROGRESS" itemLabel="Yapılıyor" />
+					<f:selectItem itemValue="DONE" itemLabel="Tamamlandı" />
+					<f:selectItem itemValue="CANCEL" itemLabel="İptal" />
+				</h:selectOneMenu>
+			</p>
+
+			<p>
+				<h:outputText value="Konu" />
+				<h:inputText value="#{todoEditBean.todo.title}"
+					styleClass="w3-input" />
+			</p>
+			<p>
+				<h:outputText value="Hedef Tarih" />
+				<h:inputText value="#{todoEditBean.todo.targetDate}"
+					styleClass="w3-input">
+					<f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+3" />
+				</h:inputText>
+			</p>
+			<p>
+				<h:outputText value="Detay" />
+				<h:inputTextarea value="#{todoEditBean.todo.description}"
+					styleClass="w3-input" />
+			</p>
+
+
+			<p>
+				<h:commandButton action="#{todoEditBean.save()}" value="Kaydet"
+					styleClass="w3-button w3-teal w3-block" />
+			</p>
+		</h:form>
+	</ui:define>
+</ui:composition>
