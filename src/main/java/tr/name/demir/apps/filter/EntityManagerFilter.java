@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 
 import tr.name.demir.apps.dao.EntityManagerHelper;
 
-@WebFilter(urlPatterns = "/*", filterName = "entityManagerFilter")
+@WebFilter("/*")
 public class EntityManagerFilter implements Filter {
 
 	@Override

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import tr.name.demir.apps.controller.LoginBean;
 
-@WebFilter(urlPatterns = "/private/*", filterName = "securityFilter")
+@WebFilter("/private/*")
 
 public class SecurityFilter implements Filter {
 	@Override
