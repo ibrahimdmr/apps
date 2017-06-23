@@ -22,7 +22,7 @@ public class UserEditBean implements Serializable {
 
 	public String save() {
 		userDAO.update(user);
-		return "/private/user/list?faces-redirect=true";
+		return "/admin/user/list?faces-redirect=true";
 	}
 
 	public User getUser() {

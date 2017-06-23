@@ -12,9 +12,23 @@
 			</p>
 			<p>
 				<h:outputText value="Şifre" />
-				<h:inputText value="#{userEditBean.user.password}"
+				<h:inputSecret value="#{userEditBean.user.password}"
 					styleClass="w3-input" />
 			</p>
+			<p>
+				<h:outputText value="Ad &amp; Soyad" />
+				<h:inputText value="#{userEditBean.user.fullname}"
+					styleClass="w3-input" />
+			</p>
+			<p>
+				<h:outputText value="Rol" />
+				<h:selectOneMenu value="#{userEditBean.user.role}"
+					styleClass="w3-select">
+					<f:selectItem itemValue="USER" itemLabel="Kullanıcı" />
+					<f:selectItem itemValue="ADMIN" itemLabel="Yönetici" />
+				</h:selectOneMenu>
+			</p>
+
 			<p>
 				<h:commandButton action="#{userEditBean.save()}" value="Kaydet"
 					styleClass="w3-button w3-teal w3-block" />

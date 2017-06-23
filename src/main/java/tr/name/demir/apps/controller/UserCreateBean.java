@@ -16,7 +16,7 @@ public class UserCreateBean implements Serializable {
 
 	public String save() {
 		userDAO.insert(user);
-		return "/private/user/list?faces-redirect=true";
+		return "/admin/user/list?faces-redirect=true";
 	}
 
 	public User getUser() {

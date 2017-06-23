@@ -8,6 +8,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Todo implements Serializable {
@@ -20,6 +21,8 @@ public class Todo implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private TodoStatus status;
 	private Date targetDate;
+	@ManyToOne
+	private User createdBy;
 
 	public Integer getId() {
 		return id;
@@ -60,5 +63,14 @@ public class Todo implements Serializable {
 	public void setTargetDate(Date targetDate) {
 		this.targetDate = targetDate;
 	}
+
+	public User getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
+	}
+	
 
 }

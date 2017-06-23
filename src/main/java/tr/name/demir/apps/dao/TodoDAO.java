@@ -6,6 +6,7 @@ import java.util.Map;
 
 import tr.name.demir.apps.entity.Todo;
 import tr.name.demir.apps.entity.TodoStatus;
+import tr.name.demir.apps.entity.User;
 
 public class TodoDAO extends GenericDAO<Todo> {
 
@@ -21,6 +22,13 @@ public class TodoDAO extends GenericDAO<Todo> {
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("statusNEW", TodoStatus.NEW);
 		parameters.put("statusINPROGESS", TodoStatus.INPROGRESS);
+		return getList(query, parameters);
+	}
+
+	public List<Todo> getListByUser(User user) {
+		String query = "Select t From Todo t Where  t.createdBy = :user";
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("user", user);
 		return getList(query, parameters);
 	}
 

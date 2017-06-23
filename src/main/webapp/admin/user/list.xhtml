@@ -4,20 +4,24 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/private/template.xhtml">
 	<ui:define name="content">
-		<h:link outcome="/private/user/create" value="Yeni Kullanıcı"
+		<h:link outcome="/admin/user/create" value="Yeni Kullanıcı"
 			styleClass="w3-button w3-teal" />
 		<h:dataTable value="#{userListBean.users}" var="user"
 			styleClass="w3-table w3-border w3-striped w3-margin-top w3-card-4"
 			headerClass="w3-gray">
 			<h:column>
 				<f:facet name="header">İşlemler</f:facet>
-				<h:link outcome="/private/user/edit" value="Düzenle">
+				<h:link outcome="/admin/user/edit" value="Düzenle">
 					<f:param name="id" value="#{user.id}" />
 				</h:link>
 			</h:column>
 			<h:column>
 				<f:facet name="header">Kullanıcı</f:facet>
 				<h:outputText value="#{user.username}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Rol</f:facet>
+				<h:outputText value="#{user.role}" />
 			</h:column>
 
 		</h:dataTable>
