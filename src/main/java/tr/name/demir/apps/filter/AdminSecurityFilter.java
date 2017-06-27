@@ -13,10 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import tr.name.demir.apps.controller.LoginBean;
+import tr.name.demir.apps.entity.UserRole;
 
-@WebFilter("/private/*")
+@WebFilter("/admin/*")
 
-public class SecurityFilter implements Filter {
+public class AdminSecurityFilter implements Filter {
 	@Override
 	public void destroy() {
 	}
@@ -31,6 +32,13 @@ public class SecurityFilter implements Filter {
 			res.sendRedirect(url);
 			return;
 		}
+		if (!isAdmin(request)) {
+			HttpServletResponse res = (HttpServletResponse) response;
+			HttpServletRequest req = (HttpServletRequest) request;
+			String url = req.getContextPath() + "/restricted.xhtml";
+			res.sendRedirect(url);
+			return;
+		}
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		chain.doFilter(request, response);
@@ -39,6 +47,11 @@ public class SecurityFilter implements Filter {
 	private boolean isLoggedIn(ServletRequest request) {
 		LoginBean loginBean = (LoginBean) ((HttpServletRequest) request).getSession().getAttribute("loginBean");
 		return loginBean != null && loginBean.getUser() != null;
+	}
+
+	private boolean isAdmin(ServletRequest request) {
+		LoginBean loginBean = (LoginBean) ((HttpServletRequest) request).getSession().getAttribute("loginBean");
+		return loginBean != null && loginBean.getUser() != null && loginBean.getUser().getRole() != UserRole.ADMIN;
 	}
 
 	@Override
