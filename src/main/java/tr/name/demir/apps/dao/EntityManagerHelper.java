@@ -12,6 +12,7 @@ import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 import tr.name.demir.apps.entity.User;
+import tr.name.demir.apps.entity.UserRole;
 import tr.name.demir.apps.util.Constants;
 
 public class EntityManagerHelper {
@@ -48,6 +49,8 @@ public class EntityManagerHelper {
 			User user = new User();
 			user.setUsername("ibrahim");
 			user.setPassword("password");
+			user.setFullname("ibrahim demir");
+			user.setRole(UserRole.ADMIN);
 			em.getTransaction().begin();
 			em.persist(user);
 			em.getTransaction().commit();
