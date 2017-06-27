@@ -25,10 +25,11 @@ public class TodoDAO extends GenericDAO<Todo> {
 		return getList(query, parameters);
 	}
 
-	public List<Todo> getListByUser(User user) {
-		String query = "Select t From Todo t Where  t.createdBy = :user";
+	public List<Todo> getListByUser(User user, TodoStatus status) {
+		String query = "Select t From Todo t Where  t.createdBy = :user And t.status = :status";
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("user", user);
+		parameters.put("status", status);
 		return getList(query, parameters);
 	}
 
